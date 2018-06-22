@@ -2,5 +2,12 @@
     uniform sampler2D uTexture;
     varying vec2 position;
     void main() {
-        if ()
+        if ( position.x >= 0.5 ) {
+            float x = 1.0 - position.x;
+            float y = position.y;
+            gl_FragColor = texture2D(uTexture, vec2(x,y));
+        }
+        else {
+            gl_FragColor = texture2D(uTexture, position);
+        }
     }
