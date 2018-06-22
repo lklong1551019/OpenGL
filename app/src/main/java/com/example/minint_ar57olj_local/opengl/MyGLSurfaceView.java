@@ -17,7 +17,7 @@ public class MyGLSurfaceView extends GLSurfaceView {
 
         Bitmap bmp = BitmapFactory.decodeResource(getResources(),R.drawable.images);
         String vertexShader = loadShader(R.raw.vertex_shader);
-        String fragmentShader = loadShader(R.raw.fragment_shader);
+        String fragmentShader = loadShader(R.raw.fragment_shader_mirror_x_axis);
 
         setEGLContextClientVersion(3);
         renderer = new MyGLRenderer(bmp,vertexShader,fragmentShader);

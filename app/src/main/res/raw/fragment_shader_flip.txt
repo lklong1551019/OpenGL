@@ -2,5 +2,6 @@
     uniform sampler2D uTexture;
     varying vec2 position;
     void main() {
-       gl_FragColor = texture2D(uTexture, position);
+        vec2 temp = vec2(1.0,1.0) - position;
+        gl_FragColor = texture2D(uTexture, temp);
     }
