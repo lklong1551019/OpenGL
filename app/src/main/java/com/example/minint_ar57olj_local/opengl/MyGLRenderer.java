@@ -1,8 +1,6 @@
 package com.example.minint_ar57olj_local.opengl;
 
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLUtils;
@@ -38,30 +36,14 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
             1, 0, // X4,Y4
     };
 
-    private static final String VERTEX_SHADER = "" +
-            "precision mediump float;" +
-            "uniform mat4 uMVPMatrix;" +
-            "attribute vec4 vPosition;" +
-            "attribute vec4 vTextureCoordinate;" +
-            "varying vec2 position;" +
-            "void main(){" +
-            " gl_Position = uMVPMatrix * vPosition;" +
-            " position = vTextureCoordinate.xy;" +
-            "}";
-
-    private static final String FRAGMENT_SHADER = "" +
-            "precision mediump float;" +
-            "uniform sampler2D uTexture;" +
-            "varying vec2 position;" +
-            "void main() {" +
-            " vec2 cen = vec2(0.5,0.5) - position.xy;" +
-            " vec2 mcen = -0.07*log(length(cen)) * normalize(cen);"+
-            "    gl_FragColor = texture2D(uTexture, position.xy - mcen);" +
-            "}";
     private float[] rotationMatrix = new float[16];
 
-    public MyGLRenderer(Bitmap bmp) {
+    private String VERTEX_SHADER;
+    private String FRAGMENT_SHADER;
+    public MyGLRenderer(Bitmap bmp, String vertexShader, String fragmentShader) {
         bitmap = bmp;
+        VERTEX_SHADER = vertexShader;
+        FRAGMENT_SHADER = fragmentShader;
     }
 
     private float scale = 1;

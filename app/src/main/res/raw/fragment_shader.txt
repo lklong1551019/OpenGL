@@ -1,0 +1,14 @@
+    precision mediump float;
+    uniform sampler2D uTexture;
+    varying vec2 position;
+    void main() {
+        vec2 cen = vec2(0.5,0.5) - position;
+        vec2 mcen = -0.07*log(length(cen)) * normalize(cen);
+        if (position.y < 0.5) {
+            vec2 temp = vec2(1.0,1.0) - position;
+               gl_FragColor = texture2D(uTexture, temp);
+        }
+        else {
+            gl_FragColor = texture2D(uTexture, position);
+        }
+    }
